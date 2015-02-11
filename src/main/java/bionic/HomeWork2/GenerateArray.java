@@ -44,7 +44,7 @@ public class GenerateArray {
             }
         }
         }
-        System.out.println("Your array was sorted at now it look like:");
+        System.out.println("Your array was sorted, at now it look like:");
         System.out.print("[");
         for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i]);
