@@ -1,6 +1,7 @@
 package bionic.TestLesson3;
 
 import bionic.Lesson3.Discount;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
