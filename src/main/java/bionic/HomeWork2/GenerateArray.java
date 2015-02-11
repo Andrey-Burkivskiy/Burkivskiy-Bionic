@@ -1,21 +1,10 @@
 package bionic.HomeWork2;
 
-import java.util.ArrayList;
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
 
-/**
- * Created by andrey on 10.02.15.
- */
 public class GenerateArray {
     private static int[] arr;
-
-    public static int[] getSortedArray() {
-
-
-        return null;
-    }
 
     public static void initArray() {
         System.out.println("Enter size of array, which you want build (accepts only number):");
