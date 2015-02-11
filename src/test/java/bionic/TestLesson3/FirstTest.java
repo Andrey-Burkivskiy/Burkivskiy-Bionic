@@ -1,6 +1,6 @@
 package bionic.TestLesson3;
 
-import bionic.Lesson3.Discount;
+import bionic.Lesson3.ReadTextFile;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -8,6 +8,6 @@ public class FirstTest {
 
     @Test
     public void testNewClass() {
-        Assert.assertEquals(Discount.readFile(), "Hello world Hello world2 ");
+        Assert.assertEquals(ReadTextFile.readFile(), "Hello world Hello world2 ");
     }
 }

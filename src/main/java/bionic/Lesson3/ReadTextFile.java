@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Discount {
+public class ReadTextFile {
     public static String readFile() {
         BufferedReader br = null;
         String resultString = "";
