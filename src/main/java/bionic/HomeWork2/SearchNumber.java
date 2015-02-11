@@ -3,9 +3,6 @@ package bionic.HomeWork2;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-/**
- * Created by andrey on 10.02.15.
- */
 public class SearchNumber {
     private static boolean isFind = false;
     private static int[] arr = GenerateArray.getArr();

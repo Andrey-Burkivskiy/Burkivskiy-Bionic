@@ -7,7 +7,7 @@ public class GenerateArray {
     private static int[] arr;
 
     public static void initArray() {
-        System.out.println("Enter size of array, which you want build (accepts only number):");
+        System.out.println("Enter size of array, which you want build (accepts only integer number):");
         while (arr == null) {
             try {
                 Scanner userInput = new Scanner(System.in);
@@ -21,7 +21,7 @@ public class GenerateArray {
     public static void fillArray() {
         int counter = 0;
         while (counter < arr.length) {
-            System.out.println("Enter value of cell #" + counter +  " (accepts only number):");
+            System.out.println("Enter value of cell #" + counter +  " (accepts only integer number):");
             try {
                 Scanner userInput = new Scanner(System.in);
                 arr[counter] = userInput.nextInt();
