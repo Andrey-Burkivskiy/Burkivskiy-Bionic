@@ -8,6 +8,6 @@ public class FirstTest {
 
     @Test
     public void testNewClass() {
-        Assert.assertEquals(Discount.readFile(), "Hello world");
+        Assert.assertEquals(Discount.readFile(), "Hello world Hello world2 ");
     }
 }

@@ -16,7 +16,7 @@ public class Discount {
             br = new BufferedReader(new FileReader(System.getProperty("user.dir") + "/src/test/resources/test.txt"));
 
             while ((sCurrentLine = br.readLine()) != null) {
-                resultString += sCurrentLine;
+                resultString += sCurrentLine + " ";
             }
 
         } catch (IOException e) {
