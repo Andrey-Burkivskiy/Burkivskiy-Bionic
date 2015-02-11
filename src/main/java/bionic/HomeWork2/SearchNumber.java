@@ -1,7 +1,6 @@
 package bionic.HomeWork2;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 
 public class SearchNumber {
     private static boolean isFind = false;
@@ -19,10 +18,14 @@ public class SearchNumber {
                 if (indexOfNumber < 0) {
                     System.out.println("This number doesn't exist in array, try again:");
                 } else {
-                    System.out.println("Your number placed in cell #" + indexOfNumber);
+                    System.out.print("Your number found in next cells: ");
+                    for (Integer number : searchAllCell(indexOfNumber))  {
+                        System.out.print("#" + number + " ");
+                    }
+
                 }
             } catch (InputMismatchException e) {
-                System.out.println("You input not a number value:");
+                System.out.println("You input not a integer number:");
             }
         }
     }
@@ -53,5 +56,23 @@ public class SearchNumber {
             }
         }
         return -(low + 1);
+    }
+    
+    private static List<Integer> searchAllCell(int cellIndex) {
+        List<Integer> cellsNumber = new ArrayList<Integer>();
+        int descendingIndex = cellIndex - 1;
+        int ascendingIndex = cellIndex;
+
+            while(descendingIndex >= 0 && arr[cellIndex] == arr[descendingIndex]) {
+                cellsNumber.add(descendingIndex);
+                descendingIndex--;
+            }
+
+            while(ascendingIndex < arr.length && arr[cellIndex] == arr[ascendingIndex]) {
+                cellsNumber.add(ascendingIndex);
+                ascendingIndex++;
+            }
+        Collections.sort(cellsNumber);
+        return cellsNumber;
     }
 }
