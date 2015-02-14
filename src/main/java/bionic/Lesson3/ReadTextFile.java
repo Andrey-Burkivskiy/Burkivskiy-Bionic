@@ -13,7 +13,7 @@ public class ReadTextFile {
 
             String sCurrentLine;
 
-            br = new BufferedReader(new FileReader(System.getProperty("user.dir") + "/src/test/resources/test.txt"));
+            br = new BufferedReader(new FileReader(System.getProperty("user.dir") + "/src/test/resources/file_lesson3.txt"));
 
             while ((sCurrentLine = br.readLine()) != null) {
                 resultString += sCurrentLine + " ";
@@ -28,6 +28,34 @@ public class ReadTextFile {
                 ex.printStackTrace();
             }
         }
+        resultString = resultString.substring(0, resultString.length() - 1);
+        return resultString;
+    }
+
+    public static String readFile(String fileName) {
+        BufferedReader br = null;
+        String resultString = "";
+
+        try {
+
+            String sCurrentLine;
+
+            br = new BufferedReader(new FileReader(System.getProperty("user.dir") + "/src/test/resources/" + fileName));
+
+            while ((sCurrentLine = br.readLine()) != null) {
+                resultString += sCurrentLine + " ";
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (br != null)br.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+        resultString = resultString.substring(0, resultString.length() - 1);
         return resultString;
     }
 

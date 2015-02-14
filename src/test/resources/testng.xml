@@ -5,7 +5,8 @@
 
     <test name="SmokeTest">
         <classes>
-            <class name="bionic.TestLesson3.FirstTest" />
+            <class name="bionic.TestLesson3.TestReadTextFile" />
+            <class name="bionic.TestHomeWork3.TestStringWithFloatNum" />
         </classes>
     </test>
 </suite>
