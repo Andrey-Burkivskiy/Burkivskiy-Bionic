@@ -1,10 +1,7 @@
-package bionic.HomeWork1;
+package bionic.Homework1;
 
 import java.util.Scanner;
 
-/**
- * Created by andrey on 05.02.15.
- */
 public class CaesarsEncrypt {
     public static void main(String[] args) {
         System.out.println("Enter your string for encryption:");

@@ -1,4 +1,4 @@
-package bionic.HomeWork2;
+package bionic.Homework2;
 
 import java.util.*;
 

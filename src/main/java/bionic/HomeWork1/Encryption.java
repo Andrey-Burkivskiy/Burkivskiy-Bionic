@@ -1,8 +1,5 @@
-package bionic.HomeWork1;
+package bionic.Homework1;
 
-/**
- * Created by andrey on 05.02.15.
- */
 public class Encryption {
     public static int key = 3;
 
@@ -17,8 +14,8 @@ public class Encryption {
             resultArrChar[i] = (char) tempCodeChar;
         }
 
-        for (int i = 0; i < resultArrChar.length; i++) {
-            resultString += resultArrChar[i];
+        for (int currentChar : resultArrChar) {
+            resultString += currentChar;
         }
 
         return resultString;
@@ -35,8 +32,8 @@ public class Encryption {
             resultArrChar[i] = (char) tempCodeChar;
         }
 
-        for (int i = 0; i < resultArrChar.length; i++) {
-            resultString += resultArrChar[i];
+        for (int currentChar : resultArrChar) {
+            resultString += currentChar;
         }
 
         return resultString;
