@@ -6,7 +6,7 @@
     <test name="SmokeTest">
         <classes>
             <class name="bionic.TestLesson3.TestReadTextFile" />
-            <class name="bionic.TestHomework3.TestStringWithFloatNum"/>
+            <class name="bionic.TestHomeWork3.TestStringWithFloatNum"/>
         </classes>
     </test>
 </suite>

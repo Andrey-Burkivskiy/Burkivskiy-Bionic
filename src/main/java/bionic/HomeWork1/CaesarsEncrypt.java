@@ -1,4 +1,4 @@
-package bionic.Homework1;
+package bionic.HomeWork1;
 
 import java.util.Scanner;
 

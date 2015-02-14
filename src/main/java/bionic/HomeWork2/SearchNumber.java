@@ -1,4 +1,4 @@
-package bionic.Homework2;
+package bionic.HomeWork2;
 
 import java.util.*;
 
@@ -6,7 +6,7 @@ public class SearchNumber {
     private static boolean isFind = false;
     private static int[] arr = GenerateArray.getArr();
     private static int lowIndex = 0;
-    private static int highIndex = arr.length -1;
+    private static int highIndex = arr.length - 1;
 
     public static void startSearch() {
         int indexOfNumber;
@@ -19,7 +19,7 @@ public class SearchNumber {
                     System.out.println("This number doesn't exist in array, try again:");
                 } else {
                     System.out.print("Your number found in next cells: ");
-                    for (Integer number : searchAllCell(indexOfNumber))  {
+                    for (Integer number : searchAllCell(indexOfNumber)) {
                         System.out.print("#" + number + " ");
                     }
 
@@ -39,39 +39,37 @@ public class SearchNumber {
             if ((low + high) % 2 == 0) {
                 mid = (low + high) / 2;
             } else {
-                mid = ((low + high) /2) + 1;
+                mid = ((low + high) / 2) + 1;
             }
 
             int midVal = arr[mid];
 
             if (midVal < val) {
                 low = mid + 1;
-            }
-            else if (midVal > val) {
+            } else if (midVal > val) {
                 high = mid - 1;
-            }
-            else {
+            } else {
                 isFind = true;
                 return mid;
             }
         }
         return -(low + 1);
     }
-    
+
     private static List<Integer> searchAllCell(int cellIndex) {
         List<Integer> cellsNumber = new ArrayList<Integer>();
         int descendingIndex = cellIndex - 1;
         int ascendingIndex = cellIndex;
 
-            while(descendingIndex >= 0 && arr[cellIndex] == arr[descendingIndex]) {
-                cellsNumber.add(descendingIndex);
-                descendingIndex--;
-            }
+        while (descendingIndex >= 0 && arr[cellIndex] == arr[descendingIndex]) {
+            cellsNumber.add(descendingIndex);
+            descendingIndex--;
+        }
 
-            while(ascendingIndex < arr.length && arr[cellIndex] == arr[ascendingIndex]) {
-                cellsNumber.add(ascendingIndex);
-                ascendingIndex++;
-            }
+        while (ascendingIndex < arr.length && arr[cellIndex] == arr[ascendingIndex]) {
+            cellsNumber.add(ascendingIndex);
+            ascendingIndex++;
+        }
         Collections.sort(cellsNumber);
         return cellsNumber;
     }

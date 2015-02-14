@@ -1,4 +1,4 @@
-package bionic.TestHomework3;
+package bionic.TestHomeWork3;
 
 import bionic.Lesson3.ReadTextFile;
 import org.testng.Assert;
