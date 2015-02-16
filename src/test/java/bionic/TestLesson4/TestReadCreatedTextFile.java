@@ -18,7 +18,6 @@ public class TestReadCreatedTextFile {
     public void testReadCreatedTextFile() {
         String stringFromFile = ReadTextFile.readFile("file_lesson4.txt");
         Assert.assertEquals(stringFromFile.matches(".*( |^)(\\(?)[0-9]+\\.[0-9]+(\\)?)( |$).*"), true, "Real number does not found in string: \"" + stringFromFile + "\".");
-
     }
 
     @BeforeTest
