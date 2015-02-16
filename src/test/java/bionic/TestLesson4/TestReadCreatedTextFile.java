@@ -23,7 +23,7 @@ public class TestReadCreatedTextFile {
     @BeforeTest
     public void createFile() {
         String path = System.getProperty("user.dir") + "/src/test/resources/file_lesson4.txt";
-        write(path, "some string with natural number: 8.0 and some text");
+        write(path, "some string with natural number: 8 and some text");
     }
 
     @AfterTest
