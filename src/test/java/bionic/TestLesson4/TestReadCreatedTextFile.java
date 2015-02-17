@@ -14,6 +14,30 @@ import java.io.PrintWriter;
 public class TestReadCreatedTextFile {
     private static File file;
 
+    public static void write(String fileName, String text) {
+        file = new File(fileName);
+
+        try {
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            PrintWriter out = new PrintWriter(file.getAbsoluteFile());
+
+            try {
+                out.print(text);
+            } finally {
+                out.close();
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void delete() throws FileNotFoundException {
+        file.delete();
+    }
+
     @Test
     public void testReadCreatedTextFile() {
         String stringFromFile = ReadTextFile.readFile("file_lesson4.txt");
@@ -23,7 +47,7 @@ public class TestReadCreatedTextFile {
     @BeforeTest
     public void createFile() {
         String path = System.getProperty("user.dir") + "/src/test/resources/file_lesson4.txt";
-        write(path, "some string with natural number: 8 and some text");
+        write(path, "some string with natural number: 8.5 and some text");
     }
 
     @AfterTest
@@ -34,35 +58,5 @@ public class TestReadCreatedTextFile {
             e.printStackTrace();
         }
 
-    }
-
-    public static void write(String fileName, String text) {
-        //Определяем файл
-        file = new File(fileName);
-
-        try {
-            //проверяем, что если файл не существует то создаем его
-            if(!file.exists()){
-                file.createNewFile();
-            }
-
-            //PrintWriter обеспечит возможности записи в файл
-            PrintWriter out = new PrintWriter(file.getAbsoluteFile());
-
-            try {
-                //Записываем текст у файл
-                out.print(text);
-            } finally {
-                //После чего мы должны закрыть файл
-                //Иначе файл не запишется
-                out.close();
-            }
-        } catch(IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public static void delete() throws FileNotFoundException {
-        file.delete();
     }
 }
