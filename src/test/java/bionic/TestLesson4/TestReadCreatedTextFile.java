@@ -4,6 +4,7 @@ import bionic.Lesson3.ReadTextFile;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import java.io.File;
@@ -39,8 +40,9 @@ public class TestReadCreatedTextFile {
     }
 
     @Test
-    public void testReadCreatedTextFile() {
-        String stringFromFile = ReadTextFile.readFile("file_lesson4.txt");
+    @Parameters("fileName")
+    public void testReadCreatedTextFile(String fileName) {
+        String stringFromFile = ReadTextFile.readFile(fileName);
         Assert.assertEquals(stringFromFile.matches(".*( |^)(\\(?)[0-9]+\\.[0-9]+(\\)?)( |$).*"), true, "Real number does not found in string: \"" + stringFromFile + "\".");
     }
 
