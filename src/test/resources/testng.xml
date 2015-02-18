@@ -9,7 +9,7 @@
         <classes>
             <class name="bionic.TestLesson3.TestReadTextFile" />
             <class name="bionic.TestHomeWork3.TestStringWithFloatNum"/>
-            <class name="bionic.TestLesson4.TestReadCreatedTextFile"/>
+            <class name="bionic.TestLesson5.TestGitHabLogin" />
         </classes>
     </test>
 </suite>
