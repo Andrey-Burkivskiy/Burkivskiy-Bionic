@@ -1,2 +1,0 @@
-some string with number
-9.234 and text
