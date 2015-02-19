@@ -1,7 +1,9 @@
 package bionic.constants;
 
-/**
- * Created by andrey on 19.02.15.
- */
+import org.openqa.selenium.By;
+
 public class SearchResults {
+    public static final String URL = Home.URL + "list/";
+    
+    public static final By TITLE = By.cssSelector(".linkWithHash.detailsLink>span");
 }

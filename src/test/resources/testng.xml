@@ -1,15 +1,14 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="firstTestSuite" verbose="1" >
-    <parameter name="expectedCount" value="2"/>
-
-    <test name="SmokeTest">
-        <parameter name="fileName" value="file_lesson4.txt"/>
-
+<suite name="search" verbose="1" >
+    <test name="search-on-homepage">
+        <classes> 
+            <class name="bionic.search.TestSearchOnHomePage"/>
+        </classes>
+    </test>
+    <test name="lessons">
         <classes>
-            <class name="bionic.TestLesson3.TestReadTextFile" />
-            <class name="bionic.TestHomeWork3.TestStringWithFloatNum"/>
-            <class name="bionic.TestLesson5.TestGitHabLogin" />
+            <class name="bionic.TestLesson4.TestRealNumberInString" />
         </classes>
     </test>
 </suite>

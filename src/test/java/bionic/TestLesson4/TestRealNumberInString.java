@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 public class TestRealNumberInString {
 
     @Test
-    public void testReadCreatedTextFile() {
+    public void testRealNumberInString() {
         String string = "some string1324.234";
         Assert.assertEquals(string.matches(".*[0-9]+\\.[0-9]+.*"), true, "Real number does not found in string: \"" + string + "\".");
     }
