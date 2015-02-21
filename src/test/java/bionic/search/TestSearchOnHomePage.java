@@ -11,7 +11,7 @@ public class TestSearchOnHomePage {
     @Test
     public void testSearchOnHomePage() {
         unregisteredUser.searchFromHomePageByRequest(SearchRequest.REQUEST_WHITH_ONE_WORD);
-        unregisteredUser.accertThatTitleOfFirstProductInNewProductsContainsRequest(SearchRequest.REQUEST_WHITH_ONE_WORD);
+        unregisteredUser.assertThatTitleOfFirstProductInNewProductsContainsRequest(SearchRequest.REQUEST_WHITH_ONE_WORD);
     }
     
     @BeforeSuite
@@ -22,6 +22,6 @@ public class TestSearchOnHomePage {
     
     @AfterSuite
     public void clean() {
-        unregisteredUser.closeBrouser();
+        unregisteredUser.closeBrowser();
     }
 }

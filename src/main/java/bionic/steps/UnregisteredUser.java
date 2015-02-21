@@ -21,7 +21,7 @@ public class UnregisteredUser {
         driver = home.getDriver();
     }
 
-    public void accertThatTitleOfFirstProductInNewProductsContainsRequest(String request) {
+    public void assertThatTitleOfFirstProductInNewProductsContainsRequest(String request) {
         SearchResultsPage searchResults = new SearchResultsPage(driver);
         String titleOfFirstProduct = searchResults.readTitleOfFirstProductInNewProductsContainsRequest(request);
         String regExp = ".*(?i:" + request + ").*";
@@ -39,7 +39,7 @@ public class UnregisteredUser {
         driver.manage().timeouts().setScriptTimeout(Settings.TIMEOUT, TimeUnit.SECONDS);
     }
 
-    public void closeBrouser() {
+    public void closeBrowser() {
         driver.quit();
     }
 }
