@@ -1,27 +1,32 @@
 package bionic.pages;
 
-import bionic.constants.Home;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 
-public class HomePage {
-    private WebDriver driver;
-            
+public class HomePage extends AbstractPage {
+    public static final String URL = "http://olx.ua/";
+
+    private static final By SEARCH_FIELD= By.id("headerSearch");
+    private static final By SEARCH_BUTTON = By.id("submit-searchmain");
+
+    private static final By CHILDRENS_WORLD_CATEGORY = By.id("cat-36");
+    
+
     public HomePage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
-    
-    public WebDriver getDriver() {
-        return driver;
-    }
-    
+
     public void openPage() {
-        driver.get(Home.URL);
+        driver.get(URL);
     }
     
     public void searchByRequest(String request) {
-        driver.findElement(Home.SEARCH_FIELD).sendKeys(request);
-        driver.findElement(Home.SEARCH_BUTTON).click();
+        driver.findElement(SEARCH_FIELD).sendKeys(request);
+        driver.findElement(SEARCH_BUTTON).click();
     }
-    
-    
+
+
+
+    public void clickOnChildrensWorldCategory() {
+        driver.findElement(CHILDRENS_WORLD_CATEGORY).click();
+    }
 }

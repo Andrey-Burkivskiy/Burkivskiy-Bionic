@@ -3,12 +3,8 @@
 <suite name="search" verbose="1" >
     <test name="search-on-homepage">
         <classes> 
-            <class name="bionic.search.TestSearchOnHomePage"/>
-        </classes>
-    </test>
-    <test name="lessons">
-        <classes>
-            <class name="bionic.TestLesson4.TestRealNumberInString" />
+            <class name="bionic.search.TestSearch"/>
+            <class name="bionic.search.TestFiltering"/>
         </classes>
     </test>
 </suite>
