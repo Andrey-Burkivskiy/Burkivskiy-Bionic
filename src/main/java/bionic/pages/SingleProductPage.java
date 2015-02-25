@@ -17,7 +17,7 @@ public class SingleProductPage extends AbstractPage{
     
     private static final By PRODUCT_STATE = By.xpath(".//td[@width='203']/div");
     private static final By PRODUCT_STATE_LABEL = By.xpath(".//strong/a");
-    private static final String TITLE_OF_BLOCK_WITH_PRODUCT_INOFO = "Состояние:\n";
+    private static final String TITLE_OF_BLOCK_WITH_PRODUCT_INFO = "Состояние:\n";
     
     private static final By PRODUCT_TITLE = By.tagName("h1");
     
@@ -26,14 +26,13 @@ public class SingleProductPage extends AbstractPage{
     }
     
     public String getProductStateLabel() {
-        return getBlockWith(TITLE_OF_BLOCK_WITH_PRODUCT_INOFO)
+        return getBlockWith(TITLE_OF_BLOCK_WITH_PRODUCT_INFO)
                 .findElement(PRODUCT_STATE_LABEL).getText();
     }
     
     protected WebElement getBlockWith(String titleOfBlockWithProductInofo){
         List<WebElement> titles = driver.findElements(PRODUCT_STATE);
         for (WebElement title : titles) {
-            System.out.println(title.getText());
             if (title.getText().matches("^"+titleOfBlockWithProductInofo+".*")) {
                 return title;
             }

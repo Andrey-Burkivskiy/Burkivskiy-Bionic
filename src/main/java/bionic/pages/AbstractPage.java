@@ -5,13 +5,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by andrey on 23.02.15.
  */
 public class AbstractPage {
     WebDriver driver;
+    private static final By ACTIVE_LANG = By.id("changeLang");
     
     public AbstractPage(WebDriver driver) {
         this.driver = driver;
@@ -38,6 +38,13 @@ public class AbstractPage {
                 e.printStackTrace();
             }
         }
+    }
+    
+    protected void selectRusianLang() {
+        if (driver.findElement(ACTIVE_LANG).getText().equals("язык")) {
+            driver.findElement(ACTIVE_LANG).click();
+        }
+        
     }
     
 }

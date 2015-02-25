@@ -17,6 +17,7 @@ public class HomePage extends AbstractPage {
 
     public void openPage() {
         driver.get(URL);
+        selectRusianLang();
     }
     
     public void searchByRequest(String request) {
