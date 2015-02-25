@@ -16,11 +16,11 @@ public class SingleProductPage extends AbstractPage{
         super(driver);
     }
     
-    private static final By PRODUCT_STATE = By.xpath(".//td[@width='203']/div");
-    private static final By PRODUCT_STATE_LABEL = By.xpath(".//strong/a");
-    private static final String TITLE_OF_BLOCK_WITH_PRODUCT_INFO = "Состояние:\n";
+    private final By PRODUCT_STATE = By.xpath(".//td[@width='203']/div");
+    private final By PRODUCT_STATE_LABEL = By.xpath(".//strong/a");
+    private final String TITLE_OF_BLOCK_WITH_PRODUCT_INFO = "Состояние:\n";
     
-    private static final By PRODUCT_TITLE = By.tagName("h1");
+    private final By PRODUCT_TITLE = By.tagName("h1");
     
     public String getTitle() {
         return driver.findElement(PRODUCT_TITLE).getText();

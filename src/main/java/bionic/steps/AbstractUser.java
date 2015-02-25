@@ -1,7 +1,7 @@
 package bionic.steps;
 
 import bionic.pages.AbstractPage;
-import bionic.pages.Browser;
+import bionic.support.Browser;
 import org.openqa.selenium.WebDriver;
 
 /**

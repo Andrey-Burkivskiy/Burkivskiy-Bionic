@@ -1,20 +1,15 @@
-package bionic.pages;
+package bionic.support;
 
 import bionic.constants.Settings;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 import java.util.Set;
 
-/**
- * Created by andrey on 25.02.15.
- */
 public class Browser implements WebDriver {
     WebDriver driver;
 
@@ -68,22 +63,22 @@ public class Browser implements WebDriver {
 
     @Override
     public Set<String> getWindowHandles() {
-        return null;
+        return driver.getWindowHandles();
     }
 
     @Override
     public String getWindowHandle() {
-        return null;
+        return driver.getWindowHandle();
     }
 
     @Override
     public TargetLocator switchTo() {
-        return null;
+        return driver.switchTo();
     }
 
     @Override
     public Navigation navigate() {
-        return null;
+        return driver.navigate();
     }
 
     @Override

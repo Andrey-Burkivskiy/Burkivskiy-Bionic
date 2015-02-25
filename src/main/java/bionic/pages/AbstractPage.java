@@ -1,6 +1,7 @@
 package bionic.pages;
 
 import bionic.constants.Settings;
+import bionic.support.Browser;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,7 +14,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.not;
 
 public class AbstractPage {
     Browser driver;
-    private static final By ACTIVE_LANG = By.id("changeLang");
+    private final By ACTIVE_LANG = By.id("changeLang");
     
     public AbstractPage(WebDriver driver) {
         this.driver = new Browser(driver);

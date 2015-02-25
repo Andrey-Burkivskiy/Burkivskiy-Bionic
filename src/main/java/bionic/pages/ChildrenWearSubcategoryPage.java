@@ -13,26 +13,26 @@ import java.util.Random;
 public class ChildrenWearSubcategoryPage extends AbstractPage {
     public static final String URL = "http://olx.ua/detskiy-mir/detskaya-odezhda/";
     
-    private static final By SUB_CATEGORY_NAME = By.cssSelector("h1.fnormal");
+    private final By SUB_CATEGORY_NAME = By.cssSelector("h1.fnormal");
     
-    private static final By STATE_FILTER_BUTTON = By.cssSelector("#param_state>div>a");
-    private static final By STATE_FILTER_NEW_PRODUCT = By.id("f-new_state");
+    private final By STATE_FILTER_BUTTON = By.cssSelector("#param_state>div>a");
+    private final By STATE_FILTER_NEW_PRODUCT = By.id("f-new_state");
 
-    private static final By FILTER_BOTTOM_LIMITS_BLOCK = By.xpath(".//*[@id='param_price']/div/div[contains(@class, 'filter-item-from')]");
-    private static final By FILTER_TOP_LIMITS_BLOCK = By.xpath(".//*[@id='param_price']/div/div[contains(@class, 'filter-item-to')]");
-    private static final By FILTER_LIMITS_BUTTON = By.xpath(".//span[contains(@data-default-label, 'Цена')]");
-    private static final By FILTER_LIMITS_FIELD = By.cssSelector(".vtop.ca2");
+    private final By FILTER_BOTTOM_LIMITS_BLOCK = By.xpath(".//*[@id='param_price']/div/div[contains(@class, 'filter-item-from')]");
+    private final By FILTER_TOP_LIMITS_BLOCK = By.xpath(".//*[@id='param_price']/div/div[contains(@class, 'filter-item-to')]");
+    private final By FILTER_LIMITS_BUTTON = By.xpath(".//span[contains(@data-default-label, 'Цена')]");
+    private final By FILTER_LIMITS_FIELD = By.cssSelector(".vtop.ca2");
 
-    private static final Integer FILTER_BOTTOM_LIMITS = 100;
-    private static final Integer FILTER_TOP_LIMITS = 1500;
+    private final Integer FILTER_BOTTOM_LIMITS = 100;
+    private final Integer FILTER_TOP_LIMITS = 1500;
     
-    private static final By SPINNER = By.cssSelector("div.listOverlay");
+    private final By SPINNER = By.cssSelector("div.listOverlay");
     
-    private static final By PRODUCTS = By.cssSelector("td.offer");
+    private final By PRODUCTS = By.cssSelector("td.offer");
     private WebElement product;
-    private static final By PRODUCTS_TITLE_LINK = By.cssSelector("h3>.linkWithHash");
-    private static final By PRODUCTS_TITLE_TEXT = By.cssSelector("h3>.linkWithHash>span");
-    private static final By PRODUCTS_PRICE = By.cssSelector(".td-price>div>p>strong");
+    private final By PRODUCTS_TITLE_LINK = By.cssSelector("h3>.linkWithHash");
+    private final By PRODUCTS_TITLE_TEXT = By.cssSelector("h3>.linkWithHash>span");
+    private final By PRODUCTS_PRICE = By.cssSelector(".td-price>div>p>strong");
     
     
     public ChildrenWearSubcategoryPage(WebDriver driver) {

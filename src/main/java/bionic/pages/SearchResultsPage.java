@@ -1,6 +1,7 @@
 package bionic.pages;
 
 import bionic.constants.SearchResults;
+import bionic.support.Browser;
 import org.openqa.selenium.WebDriver;
 
 public class SearchResultsPage extends AbstractPage {

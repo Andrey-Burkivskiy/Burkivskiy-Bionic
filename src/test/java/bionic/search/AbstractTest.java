@@ -1,17 +1,12 @@
 package bionic.search;
 
 import bionic.constants.Settings;
-import bionic.pages.Browser;
-import bionic.pages.HomePage;
+import bionic.support.Browser;
 import bionic.steps.AbstractUser;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;

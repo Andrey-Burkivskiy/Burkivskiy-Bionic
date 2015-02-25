@@ -10,8 +10,8 @@ import java.util.concurrent.TimeUnit;
  * Created by andrey on 23.02.15.
  */
 public class ChildrensWorldCategoryPage extends AbstractPage {
-    public static final By CATEGORY_NAME = By.xpath("//*[@id='top36']/h4");
-    public static final By CHILDREN_WEAR_CATEGORY = By.id("cat-539");
+    public final By CATEGORY_NAME = By.xpath("//*[@id='top36']/h4");
+    public final By CHILDREN_WEAR_CATEGORY = By.id("cat-539");
     
     public ChildrensWorldCategoryPage(WebDriver driver) {
         super(driver);
