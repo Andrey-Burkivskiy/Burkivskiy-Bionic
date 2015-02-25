@@ -14,22 +14,22 @@ public class TestFiltering extends AbstractTest{
         returnDriverFrom(user);
     }
     
-    @Test
-    public void testFilteringByStatusNew() {
-        UnregisteredUser user = new UnregisteredUser(driver);
-        user.openChildrensWearCategory();
-        user.selectFilterNewProducts();
-        user.openRandomProduct();
-        user.assertThatProductHasStateNew();
-        returnDriverFrom(user);
-    }
+//    @Test
+//    public void testFilteringByStatusNew() {
+//        UnregisteredUser user = new UnregisteredUser(driver);
+//        user.openChildrensWearCategory();
+//        user.selectFilterNewProducts();
+//        user.openRandomProduct();
+//        user.assertThatProductHasStateNew();
+//        returnDriverFrom(user);
+//    }
     
-    @Test
-    public void testFilteringByPrice() {
-        UnregisteredUser user = new UnregisteredUser(driver);
-        user.openChildrensWearCategory();
-        user.setPriceLimits();
-        user.assertThatPriceOfProductOnFirstPageIsInFilterLimits();
-        returnDriverFrom(user);
-    }
+//    @Test
+//    public void testFilteringByPrice() {
+//        UnregisteredUser user = new UnregisteredUser(driver);
+//        user.openChildrensWearCategory();
+//        user.setPriceLimits();
+//        user.assertThatPriceOfProductOnFirstPageIsInFilterLimits();
+//        returnDriverFrom(user);
+//    }
 }

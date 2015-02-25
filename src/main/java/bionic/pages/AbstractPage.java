@@ -1,23 +1,25 @@
 package bionic.pages;
 
+import bionic.constants.Settings;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-/**
- * Created by andrey on 23.02.15.
- */
+import static org.openqa.selenium.support.ui.ExpectedConditions.not;
+
 public class AbstractPage {
-    WebDriver driver;
+    Browser driver;
     private static final By ACTIVE_LANG = By.id("changeLang");
     
     public AbstractPage(WebDriver driver) {
-        this.driver = driver;
+        this.driver = new Browser(driver);
     }
 
-    public WebDriver getDriver() {
+    public Browser getDriver() {
         return driver;
     }
     
@@ -31,16 +33,23 @@ public class AbstractPage {
     }
     
     protected void waitWhenElementDisappears(By locator) {
-        while (isElementPresent(locator)) {
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+//        while (isElementPresent(locator)) {
+//            try {
+//                Thread.sleep(500);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        }
+        WebDriverWait wait = new WebDriverWait(driver, Settings.TIMEOUT);
+        wait.until(not(ExpectedConditions.presenceOfElementLocated(locator)));
     }
     
-    protected void selectRusianLang() {
+    protected void waitWhenElementPresent(By locator) {
+        WebDriverWait wait = new WebDriverWait(driver, Settings.TIMEOUT);
+        wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+    }
+    
+    protected void selectRussianLang() {
         if (driver.findElement(ACTIVE_LANG).getText().equals("язык")) {
             driver.findElement(ACTIVE_LANG).click();
         }

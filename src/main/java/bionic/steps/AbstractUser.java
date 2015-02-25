@@ -1,6 +1,7 @@
 package bionic.steps;
 
 import bionic.pages.AbstractPage;
+import bionic.pages.Browser;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -8,13 +9,13 @@ import org.openqa.selenium.WebDriver;
  */
 public class AbstractUser {
 
-    WebDriver driver;
+    Browser driver;
     
     protected AbstractUser(WebDriver driver) {
-        this.driver = driver;
+        this.driver = new Browser(driver);
     }
 
-    public WebDriver getDriver() {
+    public Browser getDriver() {
         return driver;
     }
 

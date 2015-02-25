@@ -34,14 +34,7 @@ public class UnregisteredUser extends AbstractUser {
         Assert.assertEquals(titleOfFirstProduct.matches(regExp), true, message);
     }
 
-    public void openFireFox() {
-        this.driver = new FirefoxDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Settings.TIMEOUT, TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(Settings.TIMEOUT, TimeUnit.SECONDS);
-        driver.manage().timeouts().setScriptTimeout(Settings.TIMEOUT, TimeUnit.SECONDS);
-    }
-    
+
     public void openHomePage() {
         HomePage home = new HomePage(driver);
         home.openPage();

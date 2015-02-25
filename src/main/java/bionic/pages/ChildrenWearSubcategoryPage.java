@@ -76,7 +76,7 @@ public class ChildrenWearSubcategoryPage extends AbstractPage {
 
     public void openPage() {
         driver.get(URL);
-        selectRusianLang();
+        selectRussianLang();
     }
 
     public void setBottomPrice() {

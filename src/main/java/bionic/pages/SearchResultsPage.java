@@ -3,11 +3,10 @@ package bionic.pages;
 import bionic.constants.SearchResults;
 import org.openqa.selenium.WebDriver;
 
-public class SearchResultsPage {
-    WebDriver driver;
+public class SearchResultsPage extends AbstractPage {
 
     public SearchResultsPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
     
     public String readTitleOfFirstProductInNewProductsContainsRequest(String request) {
@@ -19,7 +18,7 @@ public class SearchResultsPage {
         return textOfFirstTitle;
     }
 
-    public WebDriver getDriver() {
+    public Browser getDriver() {
         return driver;
     }
 }
