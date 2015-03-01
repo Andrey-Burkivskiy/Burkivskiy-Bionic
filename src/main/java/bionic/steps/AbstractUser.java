@@ -2,24 +2,23 @@ package bionic.steps;
 
 import bionic.pages.AbstractPage;
 import bionic.support.Browser;
-import org.openqa.selenium.WebDriver;
 
 /**
  * Created by andrey on 24.02.15.
  */
 public class AbstractUser {
 
-    Browser driver;
+    Browser window;
     
-    protected AbstractUser(WebDriver driver) {
-        this.driver = new Browser(driver);
+    protected AbstractUser(Browser window) {
+        this.window = window;
     }
 
-    public Browser getDriver() {
-        return driver;
+    public Browser getWindow() {
+        return window;
     }
 
     protected void returnDriverFrom(AbstractPage page) {
-        driver = page.getDriver();
+        window = page.getWindow();
     }
 }

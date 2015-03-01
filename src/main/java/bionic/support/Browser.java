@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Browser implements WebDriver {
-    WebDriver driver;
+    public WebDriver driver;
 
     public Browser(WebDriver firefoxDriver) {
         driver = firefoxDriver;
@@ -34,8 +34,6 @@ public class Browser implements WebDriver {
 
     @Override
     public List<WebElement> findElements(By by) {
-        WebDriverWait wait = new WebDriverWait(driver, Settings.TIMEOUT);
-        wait.until(ExpectedConditions.presenceOfElementLocated(by));
         return driver.findElements(by);
     }
 

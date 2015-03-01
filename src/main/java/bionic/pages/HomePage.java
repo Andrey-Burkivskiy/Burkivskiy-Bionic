@@ -1,5 +1,6 @@
 package bionic.pages;
 
+import bionic.support.Browser;
 import org.openqa.selenium.*;
 
 public class HomePage extends AbstractPage {
@@ -11,23 +12,23 @@ public class HomePage extends AbstractPage {
     private final By CHILDRENS_WORLD_CATEGORY = By.id("cat-36");
 
 
-    public HomePage(WebDriver driver) {
-        super(driver);
+    public HomePage(Browser window) {
+        super(window);
     }
 
     public void openPage() {
-        driver.get(URL);
+        window.get(URL);
         selectRussianLang();
     }
     
     public void searchByRequest(String request) {
-        driver.findElement(SEARCH_FIELD).sendKeys(request);
-        driver.findElement(SEARCH_BUTTON).click();
+        window.findElement(SEARCH_FIELD).sendKeys(request);
+        window.findElement(SEARCH_BUTTON).click();
     }
 
 
 
     public void clickOnChildrensWorldCategory() {
-        driver.findElement(CHILDRENS_WORLD_CATEGORY).click();
+        window.findElement(CHILDRENS_WORLD_CATEGORY).click();
     }
 }

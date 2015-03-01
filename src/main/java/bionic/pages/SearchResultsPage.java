@@ -6,12 +6,12 @@ import org.openqa.selenium.WebDriver;
 
 public class SearchResultsPage extends AbstractPage {
 
-    public SearchResultsPage(WebDriver driver) {
-        super(driver);
+    public SearchResultsPage(Browser window) {
+        super(window);
     }
     
     public String readTitleOfFirstProductInNewProductsContainsRequest(String request) {
-        String textOfFirstTitle = driver
+        String textOfFirstTitle = window
                 .findElements(SearchResults.TITLE)
                 .get(0)
                 .getText();
@@ -19,7 +19,7 @@ public class SearchResultsPage extends AbstractPage {
         return textOfFirstTitle;
     }
 
-    public Browser getDriver() {
-        return driver;
+    public Browser getWindow() {
+        return window;
     }
 }

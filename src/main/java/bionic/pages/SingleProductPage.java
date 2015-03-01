@@ -1,29 +1,27 @@
 package bionic.pages;
 
+import bionic.support.Browser;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindAll;
 
 import java.util.List;
 
-/**
- * Created by andrey on 24.02.15.
- */
 public class SingleProductPage extends AbstractPage{
     
-    public SingleProductPage(WebDriver driver) {
-        super(driver);
+    public SingleProductPage(Browser window) {
+        super(window);
     }
-    
+
+    //.//div[contains(text(), 'Состояние:')]//a
     private final By PRODUCT_STATE = By.xpath(".//td[@width='203']/div");
     private final By PRODUCT_STATE_LABEL = By.xpath(".//strong/a");
-    private final String TITLE_OF_BLOCK_WITH_PRODUCT_INFO = "Состояние:\n";
+    private final String TITLE_OF_BLOCK_WITH_PRODUCT_INFO = "Состояние:" + System.getProperty("line.separator");
     
     private final By PRODUCT_TITLE = By.tagName("h1");
     
     public String getTitle() {
-        return driver.findElement(PRODUCT_TITLE).getText();
+        return window.findElement(PRODUCT_TITLE).getText();
     }
     
     public String getProductStateLabel() {
@@ -31,10 +29,10 @@ public class SingleProductPage extends AbstractPage{
                 .findElement(PRODUCT_STATE_LABEL).getText();
     }
     
-    protected WebElement getBlockWith(String titleOfBlockWithProductInofo){
-        List<WebElement> titles = driver.findElements(PRODUCT_STATE);
+    protected WebElement getBlockWith(String titleOfBlockWithProductInfo){
+        List<WebElement> titles = window.findElements(PRODUCT_STATE);
         for (WebElement title : titles) {
-            if (title.getText().matches("^"+titleOfBlockWithProductInofo+".*")) {
+            if (title.getText().matches("^"+titleOfBlockWithProductInfo+".*")) {
                 return title;
             }
         }

@@ -1,5 +1,6 @@
 package bionic.pages;
 
+import bionic.support.Browser;
 import bionic.support.FindSubString;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -35,17 +36,17 @@ public class ChildrenWearSubcategoryPage extends AbstractPage {
     private final By PRODUCTS_PRICE = By.cssSelector(".td-price>div>p>strong");
     
     
-    public ChildrenWearSubcategoryPage(WebDriver driver) {
-        super(driver);
+    public ChildrenWearSubcategoryPage(Browser window) {
+        super(window);
     }
 
     public void assertItIsChildrenWearPage() {
-        Assert.assertEquals(driver.findElement(SUB_CATEGORY_NAME).getText(), "Продажа детской одежды");
+        Assert.assertEquals(window.findElement(SUB_CATEGORY_NAME).getText(), "Продажа детской одежды");
     }
     
     public void selectFilterNewProducts() {
-        driver.findElement(STATE_FILTER_BUTTON).click();
-        driver.findElement(STATE_FILTER_NEW_PRODUCT).click();
+        window.findElement(STATE_FILTER_BUTTON).click();
+        window.findElement(STATE_FILTER_NEW_PRODUCT).click();
         waitWhenElementDisappears(SPINNER);
     }
     
@@ -54,7 +55,7 @@ public class ChildrenWearSubcategoryPage extends AbstractPage {
     }
     
     public void assertThatPriceOfProductOnFirstPageIsInFilterLimits() {
-        List<WebElement> products = driver.findElements(PRODUCTS);
+        List<WebElement> products = window.findElements(PRODUCTS);
         for (WebElement product : products) {
             String strTitle = product.findElement(PRODUCTS_TITLE_TEXT).getText();
             String strProductPrice = product.findElement(PRODUCTS_PRICE).getText();
@@ -66,7 +67,7 @@ public class ChildrenWearSubcategoryPage extends AbstractPage {
 
     public void chooseRandomProductFromList() {
         Random random = new Random();
-        List<WebElement> prices = driver.findElements(PRODUCTS);
+        List<WebElement> prices = window.findElements(PRODUCTS);
         product = prices.get(random.nextInt(prices.size()));
     }
     
@@ -75,21 +76,21 @@ public class ChildrenWearSubcategoryPage extends AbstractPage {
     }
 
     public void openPage() {
-        driver.get(URL);
+        window.get(URL);
         selectRussianLang();
     }
 
     public void setBottomPrice() {
-        driver.findElement(FILTER_BOTTOM_LIMITS_BLOCK).findElement(FILTER_LIMITS_BUTTON).click();
-        driver.findElement(FILTER_BOTTOM_LIMITS_BLOCK).findElement(FILTER_LIMITS_FIELD).sendKeys(FILTER_BOTTOM_LIMITS.toString());
-        driver.findElement(FILTER_BOTTOM_LIMITS_BLOCK).sendKeys(Keys.RETURN);
+        window.findElement(FILTER_BOTTOM_LIMITS_BLOCK).findElement(FILTER_LIMITS_BUTTON).click();
+        window.findElement(FILTER_BOTTOM_LIMITS_BLOCK).findElement(FILTER_LIMITS_FIELD).sendKeys(FILTER_BOTTOM_LIMITS.toString());
+        window.findElement(FILTER_BOTTOM_LIMITS_BLOCK).sendKeys(Keys.RETURN);
         waitWhenElementDisappears(SPINNER);
     }
 
     public void setTopPrice() {
-        driver.findElement(FILTER_TOP_LIMITS_BLOCK).findElement(FILTER_LIMITS_BUTTON).click();
-        driver.findElement(FILTER_TOP_LIMITS_BLOCK).findElement(FILTER_LIMITS_FIELD).sendKeys(FILTER_TOP_LIMITS.toString());
-        driver.findElement(FILTER_TOP_LIMITS_BLOCK).sendKeys(Keys.RETURN);
+        window.findElement(FILTER_TOP_LIMITS_BLOCK).findElement(FILTER_LIMITS_BUTTON).click();
+        window.findElement(FILTER_TOP_LIMITS_BLOCK).findElement(FILTER_LIMITS_FIELD).sendKeys(FILTER_TOP_LIMITS.toString());
+        window.findElement(FILTER_TOP_LIMITS_BLOCK).sendKeys(Keys.RETURN);
         waitWhenElementDisappears(SPINNER);
     }
     
