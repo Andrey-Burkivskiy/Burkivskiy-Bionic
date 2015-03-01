@@ -49,6 +49,7 @@ public class AddProductPage extends AbstractPage {
 
     public void openPage() {
         window.get(URL);
+        selectRussianLang();
     }
 
     public void inputProductTitle() {
@@ -56,14 +57,14 @@ public class AddProductPage extends AbstractPage {
         window.findElement(TITLE_FIELD).sendKeys(ProductData.titleText);
     }
 
-    public void selectTeleponePartsSubcategory() {
+    public void selectTelephonePartsSubcategory() {
         window.findElement(OPEN_CATEGORY_LIST_BUTTON).click();
         window.findElement(ELECTRONIC_CATEGORY).click();
         window.findElement(TELEPHONE_SUB_CATEGORY).click();
         window.findElement(PARTS_SUB_CATEGORY).click();
     }
 
-    public void markRadiobuttonFree() {
+    public void markRadioButtonFree() {
         window.findElement(PRICE_FREE_RADIO_BUTTON).click();
     }
 

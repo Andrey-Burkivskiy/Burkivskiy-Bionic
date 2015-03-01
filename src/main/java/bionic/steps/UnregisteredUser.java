@@ -3,7 +3,6 @@ package bionic.steps;
 import bionic.data.ProductData;
 import bionic.pages.*;
 import bionic.support.Browser;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 public class UnregisteredUser extends AbstractUser {
@@ -59,7 +58,7 @@ public class UnregisteredUser extends AbstractUser {
         ChildrenWearSubcategoryPage childrenWear = new ChildrenWearSubcategoryPage(window);
         childrenWear.chooseRandomProductFromList();
         String titleOfProductInListing = childrenWear.getTitleOfProduct();
-        childrenWear.openRundomProductFromList();
+        childrenWear.openRandomProductFromList();
         returnDriverFrom(childrenWear);
         SingleProductPage productPage = new SingleProductPage(window);
         Assert.assertEquals(titleOfProductInListing.toLowerCase(), productPage.getTitle().toLowerCase(), "Title on category page does not coincide with title on opened product page.");
@@ -104,8 +103,8 @@ public class UnregisteredUser extends AbstractUser {
         AddProductPage addProductPage = new AddProductPage(window);
         addProductPage.openPage();
         addProductPage.inputProductTitle();
-        addProductPage.selectTeleponePartsSubcategory();
-        addProductPage.markRadiobuttonFree();
+        addProductPage.selectTelephonePartsSubcategory();
+        addProductPage.markRadioButtonFree();
         addProductPage.selectSubcategory();
         addProductPage.selectCondition();
         addProductPage.selectUserType();

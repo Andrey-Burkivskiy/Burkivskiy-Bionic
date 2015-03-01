@@ -2,6 +2,7 @@ package bionic.search;
 
 import bionic.AbstractTest;
 import bionic.steps.UnregisteredUser;
+import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 public class TestFiltering extends AbstractTest {

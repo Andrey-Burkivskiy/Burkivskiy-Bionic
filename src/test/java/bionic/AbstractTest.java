@@ -31,7 +31,7 @@ public class AbstractTest {
 
     @AfterClass
     public void clean() {
-//        window.quit();
+        window.quit();
     }
 
     protected void returnDriverFrom(AbstractUser user) {
