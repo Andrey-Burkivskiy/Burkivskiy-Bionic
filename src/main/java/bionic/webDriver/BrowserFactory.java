@@ -4,6 +4,7 @@ import bionic.utils.PropertyLoader;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
 
 import java.io.File;
 
@@ -23,10 +24,9 @@ public class BrowserFactory {
             driver = new ChromeDriver();
         } else 
         if (browserName.equals(IE)) {
-            
+            Assert.fail("IE doesn't setup in BrowserFactory");
         } else {
-            driver = new FirefoxDriver();
-            driver.manage().window().maximize();
+            Assert.fail("Browser configuration error");
         }
         
         return driver;
