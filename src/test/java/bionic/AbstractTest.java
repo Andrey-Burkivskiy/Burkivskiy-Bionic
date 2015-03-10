@@ -6,7 +6,9 @@ import bionic.steps.AbstractUser;
 import bionic.utils.PropertyLoader;
 import bionic.webDriver.BrowserFactory;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
 import java.io.IOException;
@@ -16,7 +18,7 @@ public class AbstractTest {
     private WebDriver driver;
     protected Browser window;
 
-    @BeforeMethod
+    @BeforeClass
     public void setUp() throws IOException {
         driver = BrowserFactory.initDriver(PropertyLoader.loadProperty("browser.name"));
         window = new Browser(driver);
@@ -25,7 +27,7 @@ public class AbstractTest {
         window.manage().timeouts().setScriptTimeout(Settings.TIMEOUT, TimeUnit.SECONDS);
     }
 
-    @AfterMethod
+    @AfterClass
     public void clean() {
         window.quit();
     }
