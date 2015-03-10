@@ -1,8 +1,10 @@
 package bionic.pages;
 
 import bionic.data.ProductData;
-import bionic.support.Browser;
+import bionic.webDriver.Browser;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Created by andrey on 01.03.15.
@@ -10,51 +12,70 @@ import org.openqa.selenium.By;
 public class AddProductPage extends AbstractPage {
 
 
+
+
     public AddProductPage(Browser window) {
         super(window);
     }
-
+    
+    private ProductData productData;
+    
     public static final String URL = HomePage.URL + "/post-new-ad/";
     
-    private final String PATH_TO_FIRST_IMG = System.getProperty("user.dir") + "/src/test/resources/product_img.jpg";
 
-    private final By TITLE_FIELD = By.cssSelector("#add-title");
-    private final By OPEN_CATEGORY_LIST_BUTTON = By.cssSelector("dt > a");
-    private final By ELECTRONIC_CATEGORY = By.xpath("//a[@id='cat-37']/span[2]/strong");
-    private final By TELEPHONE_SUB_CATEGORY = By.xpath("//div[@id='category-37']/div[2]/div[2]/div/ul/li/a/span");
-    private final By PARTS_SUB_CATEGORY = By.xpath("//div[@id='category-44']/div[2]/div[2]/div/ul/li/a/span");
-    private final By PRICE_FREE_RADIO_BUTTON = By.xpath("//div[@id='parameter-div-price']/div[2]/div/div/p/label");
-    private final By SUB_CATEGORY_BUTTON = By.cssSelector("#targetparam17 > dt > a");
-    private final By SUB_CATEGORY_OPTION = By.linkText(ProductData.subCategoryOption);
-    private final By CONDITION_BUTTON = By.cssSelector("#targetparam13 > dt > a");
-    private final By CONDITION_OPTION = By.linkText(ProductData.conditionOption);
-    private final By USER_TYPE_BUTTON = By.cssSelector("#targetid_private_business > dt > a");
-    private final By PRIVATE_OPTION = By.linkText(ProductData.privateOption);
-    private final By DESCRIPTION_FIELD = By.id("add-description");
-    private final By ALT_IMAGE_VIEW_BUTTON = By.id("show-gallery-html");
-    private final By ADD_FIRST_IMG_FIELD = By.xpath(".//*[@id='htmlbutton_2']/input");
-    private final By REGION_BUTTON = By.cssSelector("#targetregion-id-select > dt > a");
-    private final By REGION_OPTION = By.linkText(ProductData.regionOption);
-    private final By TOWN_BUTTON = By.cssSelector("#targetsubregion-id-select > dt > a");
-    private final By TOWN_OPTION = By.linkText(ProductData.townOption);
-    private final By NAME_FIELD = By.id("add-person");
-    private final By EMAIL_FIELD = By.id("add-email");
-    private final By AGREE_WITH_RULES_CHECKBOX = By.xpath(".//*[@id='accept']//label[@relname='data[accept]']");
-    private final By PREVIEW_ORDER_BUTTON = By.id("preview-link");
+    private By TITLE_FIELD = By.id("add-title");
+    private By TITLE_ERROR_TEXT = By.cssSelector("label.error[for='add-title']");
+    
+    private By OPEN_CATEGORY_LIST_BUTTON = By.cssSelector("#targetrenderSelect1-0>dt>a");
+    private By ELECTRONIC_CATEGORY = By.xpath(".//a[@id='cat-37']/span[2]/strong");
+    private By TELEPHONE_SUB_CATEGORY = By.xpath(".//div[@id='category-37']/div[2]/div[2]/div/ul/li/a/span");
+    private By PARTS_SUB_CATEGORY = By.xpath(".//div[@id='category-44']/div[2]/div[2]/div/ul/li/a/span");
+    private By PRICE_FREE_RADIO_BUTTON = By.xpath(".//div[@id='parameter-div-price']/div[2]/div/div/p/label");
+    private By SUB_CATEGORY_BUTTON = By.cssSelector("#targetparam17>dt> a");
+    private By SUB_CATEGORY_OPTION;
 
-    static {
-        ProductData.generateData();
-    }
+    private By CONDITION_BUTTON = By.cssSelector("#targetparam13>dt>a");
+    private By CONDITION_OPTION;
+    private By CONDITION_ERROR_TEXT = By.cssSelector("label.error[for='param13']");
 
+    private By USER_TYPE_BUTTON = By.cssSelector("#targetid_private_business > dt > a");
+    private By USER_TYPE_OPTION;
+    private By USER_TYPE_ERROR_TEXT = By.cssSelector("label.error[for='id_private_business']");
+
+    private By DESCRIPTION_FIELD = By.id("add-description");
+    private By DESCRIPTION_ERROR_TEXT = By.cssSelector("label.error[for='add-description']");
+
+    private By ALT_IMAGE_VIEW_BUTTON = By.id("show-gallery-html");
+    private By ADD_FIRST_IMG_FIELD = By.xpath(".//*[@id='htmlbutton_2']/input");
+    private By REGION_BUTTON = By.cssSelector("#targetregion-id-select > dt > a");
+    private By REGION_OPTION;
+
+    private By TOWN_BUTTON = By.cssSelector("#targetsubregion-id-select > dt > a");
+    private By TOWN_OPTION;
+    private By TOWN_ERROR_TEXT = By.cssSelector("label.error[for='subregion-id-select']");
+
+    private By NAME_FIELD = By.id("add-person");
+    private By EMAIL_FIELD = By.id("add-email");
+    private By AGREE_WITH_RULES_CHECKBOX = By.xpath(".//*[@id='accept']//label[@relname='data[accept]']");
+    private By PREVIEW_ORDER_BUTTON = By.id("preview-link");
 
     public void openPage() {
         window.get(URL);
         selectRussianLang();
     }
+    
+    public void setProductData(ProductData productData) {
+        this.productData = productData;
+        SUB_CATEGORY_OPTION = productData.subCategoryOption;
+        CONDITION_OPTION = productData.conditionOption;
+        USER_TYPE_OPTION = productData.userTypeOption;
+        REGION_OPTION = productData.regionOption;
+        TOWN_OPTION = productData.townOption;
+    }
 
     public void inputProductTitle() {
         window.findElement(TITLE_FIELD).clear();
-        window.findElement(TITLE_FIELD).sendKeys(ProductData.titleText);
+        window.findElement(TITLE_FIELD).sendKeys(productData.titleText);
     }
 
     public void selectTelephonePartsSubcategory() {
@@ -65,60 +86,103 @@ public class AddProductPage extends AbstractPage {
     }
 
     public void markRadioButtonFree() {
+        WebDriverWait wait = new WebDriverWait(window.driver, 30);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        wait.until(ExpectedConditions.elementToBeClickable(PRICE_FREE_RADIO_BUTTON));
         window.findElement(PRICE_FREE_RADIO_BUTTON).click();
     }
 
     public void selectSubcategory() {
-        window.findElement(SUB_CATEGORY_BUTTON).click();
-        window.findElement(SUB_CATEGORY_OPTION).click();
+        if (SUB_CATEGORY_OPTION != null) {
+            window.findElement(SUB_CATEGORY_BUTTON).click();
+            window.findElement(SUB_CATEGORY_OPTION).click();
+        }
     }
 
     public void selectCondition() {
-        window.findElement(CONDITION_BUTTON).click();
-        window.findElement(CONDITION_OPTION).click();
+        if (CONDITION_OPTION != null) {
+            window.findElement(CONDITION_BUTTON).click();
+            window.findElement(CONDITION_OPTION).click();
+        }
     }
 
     public void selectUserType() {
-        window.findElement(USER_TYPE_BUTTON).click();
-        window.findElement(PRIVATE_OPTION).click();
+        if (USER_TYPE_OPTION!= null) {
+            window.findElement(USER_TYPE_BUTTON).click();
+            window.findElement(USER_TYPE_OPTION).click();
+        }
     }
 
     public void inputProductDescription() {
-        window.findElement(DESCRIPTION_FIELD).clear();
-        window.findElement(DESCRIPTION_FIELD).sendKeys(ProductData.descriptionText);
+            window.findElement(DESCRIPTION_FIELD).clear();
+            window.findElement(DESCRIPTION_FIELD).sendKeys(productData.descriptionText);
     }
     
     public void addImageToProduct() {
         window.findElement(ALT_IMAGE_VIEW_BUTTON).click();
-        window.findElement(ADD_FIRST_IMG_FIELD).sendKeys(PATH_TO_FIRST_IMG);
+        window.findElement(ADD_FIRST_IMG_FIELD).sendKeys(productData.pathToFirstImg);
     }
 
     public void selectRegion() {
-        window.findElement(REGION_BUTTON).click();
-        window.findElement(REGION_OPTION).click();
+        if (REGION_OPTION != null) {
+            window.findElement(REGION_BUTTON).click();
+            window.findElement(REGION_OPTION).click();
+        }
     }
 
     public void selectTown() {
-        window.findElement(TOWN_BUTTON).click();
-        window.findElement(TOWN_OPTION).click();
+        if (TOWN_OPTION != null) {
+            window.findElement(TOWN_BUTTON).click();
+            window.findElement(TOWN_OPTION).click();
+        }
     }
 
     public void inputAuthorName() {
         window.findElement(NAME_FIELD).clear();
-        window.findElement(NAME_FIELD).sendKeys(ProductData.authorNameText);
+        window.findElement(NAME_FIELD).sendKeys(productData.authorNameText);
     }
 
     public void inputEmail() {
         window.findElement(EMAIL_FIELD).clear();
-        window.findElement(EMAIL_FIELD).sendKeys(ProductData.emailText);
+        window.findElement(EMAIL_FIELD).sendKeys(productData.emailText);
     }
 
-    public void markCheckboxAgreeWithRull() {
-        window.findElement(AGREE_WITH_RULES_CHECKBOX).click();
+    public void markCheckboxAgreeWithRules() {
+        if (productData.isChecked) {
+            window.findElement(AGREE_WITH_RULES_CHECKBOX).click();
+        }
+    }
+    
+    public String getTitleErrorMessageText() {
+        return window.findElement(TITLE_ERROR_TEXT).getText();
     }
 
+    public String getDescriptionErrorMessageText() {
+        return window.findElement(DESCRIPTION_ERROR_TEXT).getText();
+    }
+    
+    public String getConditionErrorMessageText() {
+        return window.findElement(CONDITION_ERROR_TEXT).getText();
+    }
+    
+    public String getUserTypeErrorMessageText() {
+        return window.findElement(USER_TYPE_ERROR_TEXT).getText();
+    }
+    
+    public String getTownErrorMessageText() {
+        return window.findElement(TOWN_ERROR_TEXT).getText();
+    }
+    
     public void clickPreviewButton() {
         window.findElement(PREVIEW_ORDER_BUTTON).click();
+    }
+
+    public ProductData getProductData() {
+        return productData;
     }
 
 }

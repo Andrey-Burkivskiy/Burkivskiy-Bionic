@@ -1,6 +1,6 @@
 package bionic.pages;
 
-import bionic.support.Browser;
+import bionic.webDriver.Browser;
 import org.openqa.selenium.*;
 
 public class HomePage extends AbstractPage {

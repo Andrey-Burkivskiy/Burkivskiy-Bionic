@@ -1,7 +1,7 @@
 package bionic.steps;
 
 import bionic.pages.AbstractPage;
-import bionic.support.Browser;
+import bionic.webDriver.Browser;
 
 /**
  * Created by andrey on 24.02.15.

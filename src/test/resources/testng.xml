@@ -5,7 +5,12 @@
         <classes> 
             <class name="bionic.search.TestSearch"/>
             <class name="bionic.search.TestFiltering"/>
+        </classes>
+    </test>
+    <test name="add-product">
+        <classes>
             <class name="bionic.products.TestAddProduct"/>
         </classes>
+        
     </test>
 </suite>

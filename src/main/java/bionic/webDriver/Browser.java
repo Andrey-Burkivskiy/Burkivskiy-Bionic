@@ -1,4 +1,4 @@
-package bionic.support;
+package bionic.webDriver;
 
 import bionic.constants.Settings;
 import org.openqa.selenium.By;

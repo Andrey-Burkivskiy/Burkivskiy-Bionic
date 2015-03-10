@@ -1,17 +1,20 @@
 package bionic.pages;
 
-import bionic.support.Browser;
-import bionic.support.FindSubString;
+import bionic.constants.Settings;
+import bionic.webDriver.Browser;
+import bionic.utils.FindSubString;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class ChildrenWearSubcategoryPage extends AbstractPage {
     public static final String URL = "http://olx.ua/detskiy-mir/detskaya-odezhda/";

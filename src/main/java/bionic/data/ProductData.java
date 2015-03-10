@@ -1,5 +1,10 @@
 package bionic.data;
 
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.RandomUtils;
+import org.openqa.selenium.By;
+
+import java.lang.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -8,33 +13,63 @@ import java.util.Random;
  * Created by andrey on 01.03.15.
  */
 public class ProductData {
-    public static String id = "";
-    public static String titleText = "";
-    public static String subCategoryOption = "";
-    public static String conditionOption = "";
-    public static String regionOption = "";
-    public static String townOption = "";
+    public String id;
+    
+    public String titleText;
+    public String titleErrorText;
+    
+    public String subCategoryOptionText;
+    public By subCategoryOption;
+    
+    public String conditionOptionText;
+    public By conditionOption;
+    public String conditionErrorText;
 
-    public static String descriptionText = "";
-    public static String authorNameText = "";
-    public static String emailText = "";
-    public static String productType = "Аксессуары / запчасти";
-    public static String priceText = "Бесплатно";
-    public static String privateOption = "Частное лицо";
+    public String userTypeOptionText;
+    public By userTypeOption;
+    public String userTypeErrorText;
+    
+    public String regionOptionText;
+    public By regionOption;
 
-    public static void generateData() {
-        id = ProductData.getRandomID();
-        titleText = ProductData.getRandomTitle();
-        subCategoryOption = ProductData.getRandomSubcategory();
-        conditionOption = ProductData.getRandomCondition();
-        regionOption = ProductData.getRegion();
-        townOption = ProductData.getRandomTown();
-        descriptionText = ProductData.getRandomDescription();
-        authorNameText = ProductData.getRandomUserName();
-        emailText = ProductData.getRandomEmail();
+    public String townOptionText;
+    public By townOption;
+    public String townErrorText;
+
+    public String descriptionText;
+    public String descriptionErrorText;
+    
+    public String authorNameText;
+    public String emailText;
+    public String productType;
+    public String priceText;
+    public static String userType;
+    public String pathToFirstImg;
+    public boolean isChecked;
+
+    public ProductData() {
+        id = getRandomID();
+        titleText = getRandomTitle();
+        descriptionText = getRandomDescription();
+        authorNameText = getRandomUserName();
+        emailText = getRandomEmail();
+        isChecked = true;
+        pathToFirstImg = System.getProperty("user.dir") + "/src/test/resources/product_img.jpg";
+        priceText = "Бесплатно";
+        productType = "Аксессуары / запчасти";
+        subCategoryOptionText = getRandomSubcategory();
+        conditionOptionText = getRandomCondition();
+        userTypeOptionText = "Частное лицо";
+        regionOptionText = "Киевская область";
+        townOptionText = getRandomTown();
+        subCategoryOption = By.linkText(subCategoryOptionText);
+        conditionOption = By.linkText(conditionOptionText);
+        userTypeOption = By.linkText(userTypeOptionText);
+        regionOption = By.linkText(regionOptionText);
+        townOption = By.linkText(townOptionText);
     }
-
-    public static String getRandomTown() {
+    
+    public String getRandomTown() {
         Random random = new Random();
         List<String> town = new ArrayList<String>();
         town.add("Белая Церковь");
@@ -76,12 +111,12 @@ public class ProductData {
         return town.get(random.nextInt(town.size()));
     }
 
-    public static String getRandomID() {
+    public String getRandomID() {
         Random random = new Random();
         return String.valueOf(random.nextInt(99999999));
     }
     
-    public static String getRandomSubcategory() {
+    public String getRandomSubcategory() {
         Random random = new Random();
         List<String> subCategory = new ArrayList<String>();
 
@@ -97,7 +132,7 @@ public class ProductData {
     }
 
 
-    public static String getRandomEmail() {
+    public String getRandomEmail() {
         Random random = new Random();
         List<String> email = new ArrayList<String>();
 
@@ -108,16 +143,16 @@ public class ProductData {
         return email.get(random.nextInt(email.size()));
     }
 
-    public static String getRandomDescription() {
+    public String getRandomDescription() {
         return "Id: " + id + "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.";
     }
 
 
-    public static String getRandomTitle() {
+    public String getRandomTitle() {
         return "Продам батарею к Samsung GT-S3600i, S/N:" + id;
     }
 
-    public static String getRandomUserName() {
+    public String getRandomUserName() {
         Random random = new Random();
         List<String> userName = new ArrayList<String>();
 
@@ -128,11 +163,12 @@ public class ProductData {
         return userName.get(random.nextInt(userName.size()));
     }
 
-    public static String getRegion() {
+    public String getRegion() {
         return "Киевская область";
     }
 
-    public static String getRandomCondition() {
+    public String getRandomCondition() {
+        
         Random random = new Random();
         List<String> condition = new ArrayList<String>();
 
@@ -140,5 +176,84 @@ public class ProductData {
         condition.add("Новый");
 
         return condition.get(random.nextInt(condition.size()));
+    }
+
+    /**
+     * Negative data for title *
+     * @return ProductData
+     */
+
+    public ProductData setShortTitle() {
+        titleText = RandomStringUtils.randomAlphabetic(RandomUtils.nextInt(1, 5)).toLowerCase();
+        titleErrorText = "Заголовок должен быть не короче 5 знаков";
+        return this;
+    }
+
+    public ProductData setEmptyTitle() {
+        titleText = "";
+        titleErrorText = "Пожалуйста, укажите заголовок";
+        return this;
+    }
+    
+    public ProductData setEmailInTitle() {
+        titleText = RandomStringUtils.randomAlphabetic(RandomUtils.nextInt(1, 8)).toLowerCase() + "@gmail.com";
+        titleErrorText = "Поле заполнено неверно. Указание email или адреса сайта запрещено..";
+        return this;
+    }
+
+    public ProductData setCepitalLetterInTitle() {
+        titleText = RandomStringUtils.randomAlphabetic(RandomUtils.nextInt(5, 8)).toUpperCase();
+        titleErrorText = "Слишком много заглавных букв";
+        return this;
+    }
+
+    public ProductData setLinkInTitle() {
+        titleText = "http://" + RandomStringUtils.randomAlphabetic(9).toLowerCase() + ".com";
+        titleErrorText = "Поле заполнено неверно. Указание email или адреса сайта запрещено..";
+        return this;
+    }
+
+    /**
+     * Negative data for description *
+     * @return ProductData
+     */
+    
+    public void setDescriptionValue(String text, String errorText) {
+        descriptionText = text;
+        descriptionErrorText = errorText;
+    }
+    
+    public ProductData setEmptyDescription() {
+        setDescriptionValue(
+                "",
+                "добавьте описание объявления"
+        );
+        return this;
+    }
+
+    public ProductData setShortDescription() {
+        setDescriptionValue(
+                RandomStringUtils.randomAlphabetic(RandomUtils.nextInt(1, 50)).toLowerCase(),
+                "Описание должно быть не короче 50 знаков"
+                );
+        return this;
+    }
+
+    public ProductData setEmptyCondition() {
+        conditionOption = null;
+        conditionErrorText = "Это поле нужно заполнить";
+        return this;
+    }
+
+    public ProductData setEmptyUserType() {
+        userTypeOption = null;
+        userTypeErrorText = "Пожалуйста, укажите, это объявление от частного лица или от компании?";
+        return this;
+    }
+
+    public ProductData setEmptyTown() {
+        townOption = null;
+        townErrorText = "Пожалуйста, укажите область и город";
+        return this;
     }
 }

@@ -1,13 +1,13 @@
 package bionic;
 
 import bionic.constants.Settings;
-import bionic.support.Browser;
+import bionic.webDriver.Browser;
 import bionic.steps.AbstractUser;
+import bionic.utils.PropertyLoader;
+import bionic.webDriver.BrowserFactory;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -15,21 +15,17 @@ import java.util.concurrent.TimeUnit;
 public class AbstractTest {
     private WebDriver driver;
     protected Browser window;
-    protected Actions actions;
-    
 
-    @BeforeClass
+    @BeforeMethod
     public void setUp() throws IOException {
-        driver = new FirefoxDriver();
+        driver = BrowserFactory.initDriver(PropertyLoader.loadProperty("browser.name"));
         window = new Browser(driver);
-        actions = new Actions(window.driver);
-        window.manage().window().maximize();
         window.manage().timeouts().implicitlyWait(Settings.TIMEOUT, TimeUnit.SECONDS);
         window.manage().timeouts().pageLoadTimeout(Settings.TIMEOUT, TimeUnit.SECONDS);
         window.manage().timeouts().setScriptTimeout(Settings.TIMEOUT, TimeUnit.SECONDS);
     }
 
-    @AfterClass
+    @AfterMethod
     public void clean() {
         window.quit();
     }

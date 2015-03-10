@@ -1,4 +1,4 @@
-package bionic.support;
+package bionic.utils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

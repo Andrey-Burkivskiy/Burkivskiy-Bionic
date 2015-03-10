@@ -1,8 +1,7 @@
 package bionic.pages;
 
-import bionic.constants.SearchResults;
-import bionic.support.Browser;
-import org.openqa.selenium.WebDriver;
+import bionic.webDriver.Browser;
+import org.openqa.selenium.By;
 
 public class SearchResultsPage extends AbstractPage {
 
@@ -10,9 +9,11 @@ public class SearchResultsPage extends AbstractPage {
         super(window);
     }
     
+    private final By TITLE = By.cssSelector("h3>a>span");
+    
     public String readTitleOfFirstProductInNewProductsContainsRequest(String request) {
         String textOfFirstTitle = window
-                .findElements(SearchResults.TITLE)
+                .findElements(TITLE)
                 .get(0)
                 .getText();
 
