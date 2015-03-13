@@ -58,7 +58,7 @@ public class AddProductPage extends AbstractPage {
     private By AGREE_WITH_RULES_CHECKBOX = By.xpath(".//*[@id='accept']//label[@relname='data[accept]']");
     private By PREVIEW_ORDER_BUTTON = By.id("preview-link");
     
-    private By SPINNER = By.id("fancybox-loading");
+    private By SPINNER = By.id("fancybox-overlay");
 
     public void openPage() {
         window.get(URL);
