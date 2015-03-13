@@ -80,9 +80,11 @@ public class AddProductPage extends AbstractPage {
     }
 
     public void selectTelephonePartsSubcategory() {
+        WebDriverWait wait = new WebDriverWait(window.driver, 30);
         window.findElement(OPEN_CATEGORY_LIST_BUTTON).click();
         window.findElement(ELECTRONIC_CATEGORY).click();
         window.findElement(TELEPHONE_SUB_CATEGORY).click();
+        wait.until(ExpectedConditions.elementToBeClickable(PARTS_SUB_CATEGORY));
         window.findElement(PARTS_SUB_CATEGORY).click();
     }
 
