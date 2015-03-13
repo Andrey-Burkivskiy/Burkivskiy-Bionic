@@ -84,7 +84,11 @@ public class AddProductPage extends AbstractPage {
         window.findElement(OPEN_CATEGORY_LIST_BUTTON).click();
         window.findElement(ELECTRONIC_CATEGORY).click();
         window.findElement(TELEPHONE_SUB_CATEGORY).click();
-        wait.until(ExpectedConditions.elementToBeClickable(PARTS_SUB_CATEGORY));
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         window.findElement(PARTS_SUB_CATEGORY).click();
     }
 
