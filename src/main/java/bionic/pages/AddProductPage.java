@@ -13,7 +13,6 @@ public class AddProductPage extends AbstractPage {
 
 
 
-
     public AddProductPage(Browser window) {
         super(window);
     }
@@ -30,7 +29,7 @@ public class AddProductPage extends AbstractPage {
     private By ELECTRONIC_CATEGORY = By.xpath(".//a[@id='cat-37']/span[2]/strong");
     private By TELEPHONE_SUB_CATEGORY = By.xpath(".//div[@id='category-37']/div[2]/div[2]/div/ul/li/a/span");
     private By PARTS_SUB_CATEGORY = By.xpath(".//div[@id='category-44']/div[2]/div[2]/div/ul/li/a/span");
-    private By PRICE_FREE_RADIO_BUTTON = By.xpath(".//div[@id='parameter-div-price']/div[2]/div/div/p/label");
+    private By PRICE_FREE_RADIO_BUTTON = By.cssSelector("label[for='parameter-free'].icon");
     private By SUB_CATEGORY_BUTTON = By.cssSelector("#targetparam17>dt> a");
     private By SUB_CATEGORY_OPTION;
 
@@ -58,6 +57,8 @@ public class AddProductPage extends AbstractPage {
     private By EMAIL_FIELD = By.id("add-email");
     private By AGREE_WITH_RULES_CHECKBOX = By.xpath(".//*[@id='accept']//label[@relname='data[accept]']");
     private By PREVIEW_ORDER_BUTTON = By.id("preview-link");
+    
+    private By SPINNER = By.id("fancybox-loading");
 
     public void openPage() {
         window.get(URL);
@@ -87,12 +88,7 @@ public class AddProductPage extends AbstractPage {
 
     public void markRadioButtonFree() {
         WebDriverWait wait = new WebDriverWait(window.driver, 30);
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        wait.until(ExpectedConditions.elementToBeClickable(PRICE_FREE_RADIO_BUTTON));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(SPINNER));
         window.findElement(PRICE_FREE_RADIO_BUTTON).click();
     }
 

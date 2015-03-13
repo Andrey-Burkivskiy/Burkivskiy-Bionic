@@ -15,6 +15,7 @@ public class BrowserFactory {
     public static WebDriver initDriver(String browserName) {
         WebDriver driver = null;
         if (browserName.equals(FIREFOX)) {
+            System.out.println(browserName);
             driver = new FirefoxDriver();
             driver.manage().window().maximize();
         } else

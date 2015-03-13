@@ -88,14 +88,14 @@ public class ChildrenWearSubcategoryPage extends AbstractPage {
     public void setBottomPrice() {
         window.findElement(FILTER_BOTTOM_LIMITS_BLOCK).findElement(FILTER_LIMITS_BUTTON).click();
         window.findElement(FILTER_BOTTOM_LIMITS_BLOCK).findElement(FILTER_LIMITS_FIELD).sendKeys(FILTER_BOTTOM_LIMITS.toString());
-        window.findElement(FILTER_BOTTOM_LIMITS_BLOCK).sendKeys(Keys.RETURN);
+        waitWhenElementPresent(SPINNER);
         waitWhenElementDisappears(SPINNER);
     }
 
     public void setTopPrice() {
         window.findElement(FILTER_TOP_LIMITS_BLOCK).findElement(FILTER_LIMITS_BUTTON).click();
         window.findElement(FILTER_TOP_LIMITS_BLOCK).findElement(FILTER_LIMITS_FIELD).sendKeys(FILTER_TOP_LIMITS.toString());
-        window.findElement(FILTER_TOP_LIMITS_BLOCK).sendKeys(Keys.RETURN);
+        waitWhenElementPresent(SPINNER);
         waitWhenElementDisappears(SPINNER);
     }
     
